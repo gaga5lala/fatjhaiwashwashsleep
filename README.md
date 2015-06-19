@@ -7,4 +7,4 @@ Alarm desktop notification every 3min.
 2. set interval
 3. switch on/off
 4. user can edit words
-
+5. summary spent time on social network(facebook, plurk, etc.)

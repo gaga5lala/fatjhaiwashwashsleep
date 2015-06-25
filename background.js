@@ -14,9 +14,13 @@ chrome.alarms.onAlarm.addListener(function( alarm ) {
 
 chrome.storage.onChanged.addListener(function() {
   chrome.storage.local.get({
-    interval: 5
+    interval: 5,
+    status: 'start'
   }, function(items) {
-    createAlarms(null, items.interval);
+    if (items.status == 'start')
+      createAlarms(null, items.interval);
+    else
+      chrome.alarms.clear
   });
 });
 

@@ -12,6 +12,14 @@ chrome.alarms.onAlarm.addListener(function( alarm ) {
   }, function() {});
 });
 
+chrome.storage.onChanged.addListener(function() {
+  chrome.storage.local.get({
+    interval: 5
+  }, function(items) {
+    chrome.alarms.create({when: Date.now(), periodInMinutes: parseInt(items.interval)});
+  });
+});
+
 chrome.notifications.onClicked.addListener(function(){
   url = 'https://www.youtube.com/watch?v=xOXDMr043sI';
   chrome.tabs.create({ url: url });
